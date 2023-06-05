@@ -1,0 +1,64 @@
+{
+  "kind": "singleType",
+  "collectionName": "settings",
+  "info": {
+    "singularName": "setting",
+    "pluralName": "settings",
+    "displayName": "Setting"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "about": {
+      "type": "text",
+      "required": true
+    },
+    "footer_text": {
+      "type": "text"
+    },
+    "copywrite_text": {
+      "type": "string"
+    },
+    "site_title": {
+      "type": "string",
+      "required": true
+    },
+    "site_subtitle": {
+      "type": "string"
+    },
+    "site_description": {
+      "type": "text"
+    },
+    "header_image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "about_image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "is_dark_default": {
+      "type": "boolean",
+      "default": false,
+      "required": false
+    },
+    "logo": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

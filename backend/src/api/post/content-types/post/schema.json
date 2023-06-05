@@ -53,6 +53,12 @@
     "reference": {
       "type": "text",
       "maxLength": 1000
+    },
+    "taxonomies": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::taxonomy.taxonomy",
+      "mappedBy": "posts"
     }
   }
 }

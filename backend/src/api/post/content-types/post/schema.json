@@ -59,6 +59,17 @@
       "relation": "manyToMany",
       "target": "api::taxonomy.taxonomy",
       "mappedBy": "posts"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "posts"
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }

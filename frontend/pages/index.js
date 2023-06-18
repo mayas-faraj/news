@@ -4,13 +4,12 @@ import ImageFallback from "@layouts/components/ImageFallback";
 import Pagination from "@layouts/components/Pagination";
 import Post from "@layouts/partials/Post";
 import Sidebar from "@layouts/partials/Sidebar";
-import { getListPage, getSinglePage } from "@lib/contentParser";
-import { getTaxonomy } from "@lib/taxonomyParser";
+import { getListPage } from "@lib/contentParser";
 import dateFormat from "@lib/utils/dateFormat";
 import { markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 import { FaRegCalendar } from "react-icons/fa";
-import { categoriesData, homeData, taxonomiesData } from "lib/getServerData";
+import { categoriesData, homeData } from "lib/getServerData";
 import urls from "@config/urls"
 
 const { blog_folder, pagination } = config.settings;
@@ -177,8 +176,6 @@ export const getStaticProps = async () => {
   const homepage = await getListPage("content/_index.md");
   const { frontmatter } = homepage;
   const { banner, promotion } = frontmatter;
-  const posts = getSinglePage(`content/${blog_folder}`);
-  const categories = getTaxonomy(`content/${blog_folder}`, "categories");
   const homeDataResponse = await homeData(pagination);
   const categoriesResponse = await categoriesData();
 

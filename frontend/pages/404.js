@@ -1,6 +1,6 @@
 import NotFound from "@layouts/404";
 import Base from "@layouts/Baseof";
-import { getNotFoundPage } from "@lib/contentParser";
+import { getRegularPage } from "@lib/contentParser";
 
 const notFound = ({ data }) => {
   return (
@@ -12,7 +12,7 @@ const notFound = ({ data }) => {
 
 // get 404 page data
 export const getStaticProps = async () => {
-  const notFoundData = await getNotFoundPage();
+  const notFoundData = await getRegularPage();
   return {
     props: {
       data: notFoundData,

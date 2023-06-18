@@ -116,7 +116,7 @@ export const postsCountData = async () => {
 export const postsSlugData = async () => {
     return await fetchData(`
     {
-        posts {
+        posts (pagination: {pageSize: 10000000}) {
           data {
             attributes {
               slug
@@ -169,10 +169,10 @@ export const postsByPageData = async (pageSize, page) => {
   `);
 };
 
-export const postsByTaxonomiesData = async (pageSize, postSlug, postTaxonomies) => {
+export const postsByCategoryData = async (pageSize, category) => {
   return await fetchData(`
   {
-      posts (pagination: { pageSize: ${pageSize} }, filters: { slug: { ne: "${postSlug}"}, taxonomies: { name: {in: [${postTaxonomies.map(tax => `"${tax}"`)}] } } }) {
+      posts (pagination: { pageSize: ${pageSize} }, filters: { category: { slug: {eq: "${category}" } } } ) {
         data {
           attributes {
             title
@@ -211,10 +211,52 @@ export const postsByTaxonomiesData = async (pageSize, postSlug, postTaxonomies) 
   `);
 };
 
-export const postsData = async () => {
+export const postsByTaxonomiesData = async (pageSize, postSlug, postTaxonomies) => {
+  return await fetchData(`
+  {
+      posts (pagination: { pageSize: ${pageSize} }, filters: { slug: { ne: "${postSlug}"}, taxonomies: { slug: {in: [${postTaxonomies.map(tax => `"${tax}"`)}] } } }) {
+        data {
+          attributes {
+            title
+            slug
+            content
+            createdAt
+            user {
+              data {
+                attributes {
+                  fullname
+                }
+              }
+            }
+            taxonomies {
+              data {
+                attributes {
+                  name
+                  slug
+                }
+              }
+            }
+            feature_image {
+              data {
+                attributes {
+                  alternativeText
+                  url
+                  width
+                  height
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
+};
+
+export const postsData = async (pageSize) => {
     return await fetchData(`
     {
-        posts {
+        posts (pagination: { pageSize: ${pageSize} }) {
           data {
             attributes {
               title

@@ -25,9 +25,8 @@ const PostSingle = ({
   relatedPosts,
   categories,
 }) => {
-  const { theme } = useTheme();
-  const author = post.user?.data?.attributes?.username ? post.user.data.attributes.username : meta_author;
-  const shortDescription = post.content.slice(0, 120);
+  console.dir(post.user.data, {depth: null});
+  const author = post.user?.data?.attributes?.fullname ? post.user.data.attributes.fullname : meta_author;
 
   return (
     <Base title={post.title} description={post.shortDescription}>
@@ -47,7 +46,7 @@ const PostSingle = ({
                     />
                   )}
                   <ul className="absolute top-3 left-2 flex flex-wrap items-center">
-                    {post.taxonomies.data.map((tax, index) => (
+                    {post.taxonomies.data.map((tax) => (
                       <li
                         className="mx-2 inline-flex h-7 rounded-[35px] bg-primary px-3 text-white"
                         key={tax.attributes.slug}
@@ -64,7 +63,7 @@ const PostSingle = ({
                 </div>
                 <h1 className="lg:text-[42px] mt-4">{post.title}</h1>
                 <ul className="flex items-center space-x-4">
-                  <li>
+                  <li className="me-3">
                     <Link
                       className="inline-flex items-center font-secondary text-xs leading-3"
                       href="/about"

@@ -4,7 +4,7 @@ banner:
   title_small: "في الموقع الأخباري"
   content: موقع جداب تصميم حديث.
   image_enable: true
-  image: /images/banner-author.png
+  image: /images/stamp.webp
   button:
     enable: true
     label: قراءة المزيد

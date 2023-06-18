@@ -5,23 +5,35 @@
       "url": "/"
     },
     {
+      "name": "التصنيفات",
+      "url": "",
+      "hasChildren": true,
+      "children": [
+        {
+          "name": "سياسة",
+          "url": "/categories/politic"
+        },
+        {
+          "name": "اقتصاد",
+          "url": "/categories/economy"
+        },
+        {
+          "name": "علوم",
+          "url": "/categories/science"
+        },
+        {
+          "name": "ثقافة",
+          "url": "/categories/info"
+        }
+      ]
+    },
+    {
       "name": "حول الموقع",
       "url": "/about"
     },
     {
       "name": "اتصل بنا",
       "url": "/contact"
-    },
-    {
-      "name": "تصنيفات",
-      "url": "",
-      "hasChildren": true,
-      "children": [
-        {
-          "name": "التصنيفات",
-          "url": "/categories"
-        }
-      ]
     }
   ],
   "footer": [

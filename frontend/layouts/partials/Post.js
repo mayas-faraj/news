@@ -22,16 +22,16 @@ const Post = ({ post }) => {
           />
         )}
         <ul className="absolute top-3 left-2 flex flex-wrap items-center">
-          {post.taxonomies?.data?.map((tag, index) => (
+          {post.taxonomies?.data?.map((tax) => (
             <li
               className="mx-2 inline-flex h-7 rounded-[35px] bg-primary px-3 text-white"
-              key={"tag-" + index}
+              key={tax.attributes.slug}
             >
               <Link
                 className="capitalize"
-                href={`/taxonomies/${tag.slug}`}
+                href={`/taxonomies/${tax.attributes.slug}`}
               >
-                {tag.attributes.name}
+                {tax.attributes.name}
               </Link>
             </li>
           ))}
@@ -46,7 +46,7 @@ const Post = ({ post }) => {
         </Link>
       </h3>
       <ul className="flex items-center space-x-4">
-        <li>
+        <li className="me-3">
           <Link
             className="inline-flex items-center font-secondary text-xs leading-3"
             href="/about"

@@ -1,0 +1,4 @@
+{
+    "backendUrl": "http://localhost:1337",
+    "backendApiUrl": "http://localhost:1337/graphql"
+}

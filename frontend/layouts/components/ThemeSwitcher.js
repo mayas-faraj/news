@@ -14,7 +14,7 @@ const ThemeSwitcher = () => {
         <button
           aria-label="Toggle Theme"
           type="button"
-          className="ml-1 mr-1 h-8 w-8 rounded p-1 sm:ml-4"
+          className="ms-1 me-1 h-8 w-8 rounded p-1 sm:ms-4"
           onClick={() =>
             setTheme(
               theme === "dark" || resolvedTheme === "dark" ? "light" : "dark"

@@ -12,118 +12,138 @@ import { FaRegCalendar, FaUserAlt } from "react-icons/fa";
 import Post from "./partials/Post";
 import Sidebar from "./partials/Sidebar";
 import shortcodes from "./shortcodes/all";
-const { disqus } = config;
+import urls from "@config/urls"
+import ImageFallback from "./components/ImageFallback";
+
+
 const { meta_author } = config.metadata;
 
 const PostSingle = ({
-  frontmatter,
-  content,
-  mdxContent,
   slug,
+  post,
   posts,
-  allCategories,
   relatedPosts,
+  categories,
 }) => {
-  let { description, title, date, image, categories } = frontmatter;
-  description = description ? description : content.slice(0, 120);
-
   const { theme } = useTheme();
-  const author = frontmatter.author ? frontmatter.author : meta_author;
-  // Local copy so we don't modify global config.
-  let disqusConfig = config.disqus.settings;
-  disqusConfig.identifier = frontmatter.disqusId
-    ? frontmatter.disqusId
-    : config.settings.blog_folder + "/" + slug;
+  const author = post.user?.data?.attributes?.username ? post.user.data.attributes.username : meta_author;
+  const shortDescription = post.content.slice(0, 120);
 
   return (
-    <Base title={title} description={description}>
+    <Base title={post.title} description={post.shortDescription}>
       <section className="section single-blog mt-6">
         <div className="container">
           <div className="row">
             <div className="lg:col-8">
               <article>
                 <div className="relative">
-                  {image && (
+                  {post.feature_image?.data?.attributes?.url && (
                     <Image
-                      src={image}
+                      src={urls.backendUrl + post.feature_image.data.attributes.url}
                       height="500"
                       width="1000"
-                      alt={title}
+                      alt={post.feature_image.data.attributes.alternativeText}
                       className="rounded-lg"
                     />
                   )}
                   <ul className="absolute top-3 left-2 flex flex-wrap items-center">
-                    {categories.map((tag, index) => (
+                    {post.taxonomies.data.map((tax, index) => (
                       <li
                         className="mx-2 inline-flex h-7 rounded-[35px] bg-primary px-3 text-white"
-                        key={"tag-" + index}
+                        key={tax.attributes.slug}
                       >
                         <Link
                           className="capitalize"
-                          href={`/categories/${tag.replace(" ", "-")}`}
+                          href={`/taxonomies/${tax.attributes.slug}`}
                         >
-                          {tag}
+                          {tax.attributes.name}
                         </Link>
                       </li>
                     ))}
                   </ul>
                 </div>
-                {config.settings.InnerPaginationOptions.enableTop && (
-                  <div className="mt-4">
-                    <InnerPagination posts={posts} date={date} />
-                  </div>
-                )}
-                {markdownify(title, "h1", "lg:text-[42px] mt-4")}
+                <h1 className="lg:text-[42px] mt-4">{post.title}</h1>
                 <ul className="flex items-center space-x-4">
                   <li>
                     <Link
                       className="inline-flex items-center font-secondary text-xs leading-3"
                       href="/about"
                     >
-                      <FaUserAlt className="mr-1.5" />
+                      <FaUserAlt className="me-1.5" />
                       {author}
                     </Link>
                   </li>
                   <li className="inline-flex items-center font-secondary text-xs leading-3">
-                    <FaRegCalendar className="mr-1.5" />
-                    {dateFormat(date)}
+                    <FaRegCalendar className="me-1.5" />
+                    {dateFormat(post.createdAt)}
                   </li>
                 </ul>
-                <div className="content mb-16">
-                  <MDXRemote {...mdxContent} components={shortcodes} />
+                <div className="content mb-4">{post.content}</div>
+                <div className="mb-4">
+                  {post.reference != null && (
+                    <p>
+                      <strong>المصدر: </strong>
+                      <a href={post.reference} target="_blank" rel="noreferrer" className="text-primary">
+                        {post.reference.substring(0, post.reference.indexOf("/", 8))}
+                      </a>
+                    </p>
+                  )}
                 </div>
-                {config.settings.InnerPaginationOptions.enableBottom && (
-                  <InnerPagination posts={posts} date={date} />
-                )}
+                <div className="container grid grid-cols-1 md:grid-cols-3 gap-2 mx-auto">
+                  {
+                    post.media?.data?.length > 0 && post.media.data.map(mediaItem => (
+                      <div key={mediaItem.attributes.url} className="w-full rounded">
+                        {
+                          mediaItem.attributes.mime.startsWith("image") && (
+                            <a href={urls.backendUrl + mediaItem.attributes.url}>
+                              <Image
+                                src={urls.backendUrl + mediaItem.attributes.url}
+                                height={mediaItem.attributes.width}
+                                width={mediaItem.attributes.height}
+                                alt={mediaItem.attributes.alternativeText}
+                                className="h-auto max-w-full rounded-lg"
+                              />
+                            </a>
+                          )
+                        }
+                        {
+                          mediaItem.attributes.mime.startsWith("video") && (
+                            <video
+                              src={urls.backendUrl + mediaItem.attributes.url}
+                              height={mediaItem.attributes.width}
+                              width={mediaItem.attributes.height}
+                              className="h-auto max-w-full rounded-lg"
+                            />
+                          )
+                        }
+                      </div>
+                    ))
+                  }
+                </div>
               </article>
-              <div className="mt-16">
-                {disqus.enable && (
-                  <DiscussionEmbed
-                    key={theme}
-                    shortname={disqus.shortname}
-                    config={disqusConfig}
-                  />
-                )}
-              </div>
             </div>
             <Sidebar
               posts={posts.filter((post) => post.slug !== slug)}
-              categories={allCategories}
+              categories={categories}
             />
           </div>
         </div>
 
         {/* Related posts */}
-        <div className="container mt-20">
-          <h2 className="section-title">Related Posts</h2>
-          <div className="row mt-16">
-            {relatedPosts.slice(0, 3).map((post, index) => (
-              <div key={"post-" + index} className="mb-12 lg:col-4">
-                <Post post={post} />
+        {
+          relatedPosts.length > 0 && (
+            <div className="container mt-20">
+              <h2 className="section-title">أخبار ذات صلة</h2>
+              <div className="row mt-16">
+                {relatedPosts.slice(0, 3).map((post, index) => (
+                  <div key={"post-" + index} className="mb-12 lg:col-4">
+                    <Post post={post.attributes} />
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
+          )
+        }
       </section>
     </Base>
   );

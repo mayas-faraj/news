@@ -4,7 +4,6 @@ import menu from "@config/menu.json";
 import social from "@config/social.json";
 import ImageFallback from "@layouts/components/ImageFallback";
 import Logo from "@layouts/components/Logo";
-import { markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 
 const Footer = () => {
@@ -21,7 +20,7 @@ const Footer = () => {
         <div className="mb-6 inline-flex">
           <Logo />
         </div>
-        {markdownify(footer_content, "p", "max-w-[638px] mx-auto")}
+        <p className="max-w-[638px] mx-auto">{footer_content}</p>
 
         {/* footer menu */}
         <ul className="mb-12 mt-6 flex-wrap space-x-2 lg:space-x-4">
@@ -41,7 +40,7 @@ const Footer = () => {
           <Social source={social} className="socials mb-12 justify-center" />
         </div>
         {/* copyright */}
-        {markdownify(copyright, "p")}
+        <p>{copyright}</p>
       </div>
     </footer>
   );

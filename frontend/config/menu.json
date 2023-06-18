@@ -1,28 +1,24 @@
 {
   "main": [
     {
-      "name": "Home",
+      "name": "الرئيسية",
       "url": "/"
     },
     {
-      "name": "About",
+      "name": "حول الموقع",
       "url": "/about"
     },
     {
-      "name": "Elements",
-      "url": "/elements"
-    },
-    {
-      "name": "Contact",
+      "name": "اتصل بنا",
       "url": "/contact"
     },
     {
-      "name": "Pages",
+      "name": "تصنيفات",
       "url": "",
       "hasChildren": true,
       "children": [
         {
-          "name": "Categories",
+          "name": "التصنيفات",
           "url": "/categories"
         }
       ]
@@ -30,19 +26,19 @@
   ],
   "footer": [
     {
-      "name": "Home",
+      "name": "الرئيسية",
       "url": "/"
     },
     {
-      "name": "About",
+      "name": "حول الموقع",
       "url": "/about"
     },
     {
-      "name": "Contact",
+      "name": "اتصل بنا",
       "url": "/contact"
     },
     {
-      "name": "Privacy Policy",
+      "name": "اتفاقية الترخيص",
       "url": "#"
     }
   ]

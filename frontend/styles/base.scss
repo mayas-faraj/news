@@ -1,5 +1,6 @@
 html {
   @apply text-base;
+  direction: rtl;
 }
 
 body {
@@ -43,4 +44,8 @@ h5,
 h6,
 .h6 {
   @apply text-h6;
+}
+
+p {
+  unicode-bidi: plaintext;
 }

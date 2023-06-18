@@ -1,18 +1,18 @@
 {
   "site": {
-    "title": "Geeky Nextjs",
+    "title": "موقع أخباري",
     "base_url": "/",
-    "favicon": "/images/favicon.png",
-    "logo": "/images/logo.png",
-    "logo_white": "/images/logo-light.png",
-    "logo_width": "150",
+    "favicon": "/images/mini-generic-logo.png",
+    "logo": "/images/generic-logo.png",
+    "logo_white": "/images/generic-logo-light.png",
+    "logo_width": "70",
     "logo_height": "39",
     "logo_text": "Geeky"
   },
   "settings": {
     "theme_switcher": true,
     "default_theme": "system",
-    "pagination": 6,
+    "pagination": 4,
     "InnerPaginationOptions": {
       "enableTop": false,
       "enableBottom": true
@@ -22,34 +22,34 @@
   },
   "params": {
     "tag_manager_id": "",
-    "footer_content": "Lorem ipsum dolor sit amt, conse adip iscing. donec iaculis tempasus laoreet. Libero ullam rgscper.",
-    "copyright": "Designed and Developed By [Statichunt](https://statichunt.com/)"
+    "footer_content": "نسعى إلى تقديم خدمة إخبارية موثوقة ومتنوعة ومحايدة. نغطي مواضيع سياسية واقتصادية واجتماعية وثقافية ورياضية وتكنولوجية وغيرها",
+    "copyright": "© حقوق النشر 2023، جميع الحقوق محفوظة"
   },
   "metadata": {
-    "meta_author": "Statichunt",
+    "meta_author": "Mayas Faraj",
     "meta_image": "/images/og-image.png",
-    "meta_description": "Geeky Nextjs Personal Blog Template"
+    "meta_description": "موقع أخبار شاملة تتضمن الوثوقية والدقة"
   },
   "widgets": {
     "about": {
       "enable": true,
-      "content": "Lorem ipsum dolor sit amet, conse tfctetur adipiscing elit. Vel in in donec iaculis tempasus odio nunc laoreet . Libero ullam rgscorper."
+      "content": "مرحبا بكم في موقع الأخبار العربي، الموقع الذي يقدم لكم أحدث وأدق المعلومات عن ما يحدث في العالم العربي والعالمي. نحن فريق من الصحفيين والمحررين والمترجمين المتخصصين في مجالات مختلفة، نسعى إلى تقديم خدمة إخبارية موثوقة ومتنوعة ومحايدة. نغطي مواضيع سياسية واقتصادية واجتماعية وثقافية ورياضية وتكنولوجية وغيرها، باللغة العربية وبأسلوب سهل وواضح. نهتم بآراء قرائنا ونحترم تعليقاتهم وانتقاداتهم، وندعوهم إلى المشاركة في تحسين محتوى موقعنا. شكرا لزيارتكم ونتمنى لكم قراءة ممتعة."
     },
     "featured_posts": {
       "enable": true,
-      "title": "Blog Categories",
+      "title": "التصنيفات المهمة",
       "showPost": 3
     },
     "categories": {
       "enable": true,
-      "title": "Blog Categories"
+      "title": "التصنيفات"
     },
     "newsletter": {
       "enable": true,
-      "title": "Newsletter",
-      "content": "Join thousands of Tiny Salt subscribers and get our best recipes delivered each week!",
+      "title": "اشترك بخدمة المراسلة",
+      "content": "سوف يتم اعلامك على بريدك الإلكتروني بآهم الأخبار والتحديثات",
       "privacy_policy_page": "#",
-      "malichipm_url": ""
+      "malichip_url": "http://test.com"
     }
   },
   "disqus": {

@@ -1,6 +1,6 @@
 import { markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
-import { BsArrowRightShort } from "react-icons/bs";
+import { BsArrowLeftShort } from "react-icons/bs";
 import { FaEnvelope, FaMapMarkerAlt, FaUserAlt } from "react-icons/fa";
 import ImageFallback from "./components/ImageFallback";
 
@@ -23,15 +23,15 @@ const Contact = ({ data }) => {
             {markdownify(
               title,
               "h1",
-              "h1 my-10 lg:my-11 lg:pt-11 text-center lg:text-left lg:text-[64px]"
+              "h1 my-10 lg:my-11 lg:pt-11 text-center lg:text-right lg:text-[64px]"
             )}
           </div>
           <div className="contact-form-wrapper rounded border border-border p-6 dark:border-darkmode-border lg:col-6">
             <h2>
-              Send Us A
-              <span className="ml-1.5 inline-flex items-center text-primary">
-                Message
-                <BsArrowRightShort />
+              أكتب لنا
+              <span className="ms-1.5 inline-flex items-center text-primary">
+                ما تريد
+                <BsArrowLeftShort />
               </span>
             </h2>
             <form
@@ -41,7 +41,7 @@ const Contact = ({ data }) => {
             >
               <div className="mb-6">
                 <label className="mb-2 block font-secondary" htmlFor="name">
-                  Full name
+                  الاسم الكامل
                   <small className="font-secondary text-sm text-primary">
                     *
                   </small>
@@ -50,13 +50,13 @@ const Contact = ({ data }) => {
                   className="form-input w-full"
                   name="name"
                   type="text"
-                  placeholder="Thomas Milano"
+                  placeholder="سعيد البرادعي"
                   required
                 />
               </div>
               <div className="mb-6">
                 <label className="mb-2 block font-secondary" htmlFor="email">
-                  Email Address
+                  البريد الإلكتروني
                   <small className="font-secondary text-sm text-primary">
                     *
                   </small>
@@ -65,13 +65,13 @@ const Contact = ({ data }) => {
                   className="form-input w-full"
                   name="email"
                   type="email"
-                  placeholder="example@gmail.com"
+                  placeholder="example@hotmail.com"
                   required
                 />
               </div>
               <div className="mb-6">
                 <label className="mb-2 block font-secondary" htmlFor="subject">
-                  Subject
+                  العنوان
                   <small className="font-secondary text-sm text-primary">
                     *
                   </small>
@@ -80,27 +80,27 @@ const Contact = ({ data }) => {
                   className="form-input w-full"
                   name="subject"
                   type="text"
-                  placeholder="Blog advertisement"
+                  placeholder="ما هي مصدر الأخبار"
                   required
                 />
               </div>
               <div className="mb-6">
                 <label className="mb-2 block font-secondary" htmlFor="message">
-                  Your Message Here
+                  الرسالة
                   <small className="font-secondary text-sm text-primary">
                     *
                   </small>
                 </label>
                 <textarea
                   className="form-textarea w-full"
-                  placeholder="Hello I’m Mr ‘x’ from………….."
+                  placeholder="مرحبا, لدي سؤال حول...."
                   rows="7"
                 />
               </div>
               <input
                 className="btn btn-primary"
                 type="submit"
-                value="Send Now"
+                value="أرسل الآن"
               />
             </form>
           </div>
@@ -114,7 +114,7 @@ const Contact = ({ data }) => {
              rounded border border-border p-4 text-primary dark:border-darkmode-border"
               >
                 <FaUserAlt />
-                <p className="ml-1.5 text-lg font-bold text-dark dark:text-darkmode-light">
+                <p className="ms-1.5 text-lg font-bold text-dark dark:text-darkmode-light">
                   {phone}
                 </p>
               </Link>
@@ -128,7 +128,7 @@ const Contact = ({ data }) => {
              rounded border border-border p-4 text-primary dark:border-darkmode-border"
               >
                 <FaEnvelope />
-                <p className="ml-1.5 text-lg font-bold text-dark dark:text-darkmode-light">
+                <p className="ms-1.5 text-lg font-bold text-dark dark:text-darkmode-light">
                   {mail}
                 </p>
               </Link>
@@ -141,7 +141,7 @@ const Contact = ({ data }) => {
              rounded border border-border p-4 text-primary dark:border-darkmode-border"
               >
                 <FaMapMarkerAlt />
-                <p className="ml-1.5 text-lg font-bold text-dark dark:text-darkmode-light">
+                <p className="ms-1.5 text-lg font-bold text-dark dark:text-darkmode-light">
                   {location}
                 </p>
               </span>

@@ -1,5 +1,5 @@
 body.menu-open {
-  @apply overflow-hidden pr-0;
+  @apply overflow-hidden pl-0;
 }
 
 .header {
@@ -27,7 +27,7 @@ body.menu-open {
 }
 
 .nav-item {
-  @apply mb-5 text-left lg:mb-0;
+  @apply mb-5 text-right lg:mb-0;
 
   &.active {
     @apply bg-primary text-white;
@@ -35,7 +35,7 @@ body.menu-open {
 }
 
 .nav-link {
-  @apply rounded-[30px] px-6 py-2.5 text-left font-secondary text-[13.5px] capitalize  text-dark transition hover:bg-primary hover:text-white dark:text-darkmode-light md:px-3 md:py-3 lg:text-center xl:px-5;
+  @apply rounded-[30px] px-6 py-2.5 text-right font-secondary text-[13.5px] capitalize  text-dark transition hover:bg-primary hover:text-white dark:text-darkmode-light md:px-3 md:py-3 lg:text-center xl:px-5;
 
   &.active {
     @apply bg-primary text-white;

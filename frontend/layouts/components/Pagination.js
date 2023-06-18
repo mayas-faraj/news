@@ -30,15 +30,15 @@ const Pagination = ({ section, currentPage, totalPages }) => {
               className="flex items-center rounded-full px-2 py-1 text-3xl font-bold leading-none text-dark dark:text-darkmode-light"
             >
               <>
-                <BsArrowLeftShort />
-                <span className="ml-3 text-lg ">Previous</span>
+                <BsArrowRightShort />
+                <span className="ms-3 text-lg ">السابق</span>
               </>
             </Link>
           ) : (
             <span className="flex items-center rounded-full px-2 py-1 text-3xl font-bold text-dark dark:text-darkmode-light ">
               <>
-                <BsArrowLeftShort />
-                <span className="ml-3 text-lg">Previous</span>
+                <BsArrowRightShort />
+                <span className="ms-3 text-lg">السابق</span>
               </>
             </span>
           )}
@@ -74,18 +74,18 @@ const Pagination = ({ section, currentPage, totalPages }) => {
           {hasNextPage ? (
             <Link
               href={`${section ? "/" + section : ""}/page/${currentPage + 1}`}
-              className="ml-4 flex items-center rounded-full px-2 py-1 text-3xl font-bold leading-none text-dark dark:text-darkmode-light"
+              className="ms-4 flex items-center rounded-full px-2 py-1 text-3xl font-bold leading-none text-dark dark:text-darkmode-light"
             >
               <>
-                <span className="mr-3 text-lg">Next</span>
-                <BsArrowRightShort />
+                <span className="me-3 text-lg">التالي</span>
+                <BsArrowLeftShort />
               </>
             </Link>
           ) : (
-            <span className="ml-4 flex items-center rounded-full px-2 py-1 text-3xl font-bold text-dark dark:text-darkmode-light">
+            <span className="ms-4 flex items-center rounded-full px-2 py-1 text-3xl font-bold text-dark dark:text-darkmode-light">
               <>
-                <span className="mr-3 text-lg">Next</span>
-                <BsArrowRightShort />
+                <span className="me-3 text-lg">التالي</span>
+                <BsArrowLeftShort />
               </>
             </span>
           )}

@@ -6,7 +6,7 @@ const Document = () => {
   // destructuring items from config object
   const { favicon } = config.site;
   return (
-    <Html lang="en">
+    <Html lang="ar">
       <Head>
         {/* favicon */}
         <link rel="shortcut icon" href={favicon} />
@@ -23,6 +23,10 @@ const Document = () => {
           media="(prefers-color-scheme: dark)"
           content="#000"
         />
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true"/>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic&family=Vazirmatn:wght@300&display=swap" rel="stylesheet"/>
+
       </Head>
       <body>
         <Main />

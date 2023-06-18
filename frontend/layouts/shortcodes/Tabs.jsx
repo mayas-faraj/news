@@ -27,7 +27,7 @@ function Tabs({ children }) {
 
   return (
     <div className="relative">
-      <ul className="mb-0 flex list-none items-center space-x-4 pl-0">
+      <ul className="mb-0 flex list-none items-center space-x-4 pr-0">
         {children.map((item, index) => (
           <li
             key={index}

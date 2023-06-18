@@ -1,31 +1,21 @@
 import config from "@config/config.json";
 import Base from "@layouts/Baseof";
 import Pagination from "@layouts/components/Pagination";
-import { getListPage, getSinglePage } from "@lib/contentParser";
-import { markdownify } from "@lib/utils/textConverter";
-import { sortByDate } from "@lib/utils/sortFunctions";
 import Post from "@partials/Post";
-const { blog_folder, summary_length } = config.settings;
+import { postsByPageData, postsCountData } from "@lib/getServerData";
 
 // blog pagination
-const BlogPagination = ({ postIndex, posts, currentPage, pagination }) => {
-  const indexOfLastPost = currentPage * pagination;
-  const indexOfFirstPost = indexOfLastPost - pagination;
-  const orderedPosts = sortByDate(posts);
-  const currentPosts = orderedPosts.slice(indexOfFirstPost, indexOfLastPost);
-  const { frontmatter } = postIndex;
-  const { title } = frontmatter;
-  const totalPages = Math.ceil(posts.length / pagination);
+const BlogPagination = ({ posts, currentPage, totalPages }) => {
 
   return (
-    <Base title={title}>
+    <Base title={config.title}>
       <section className="section">
         <div className="container">
-          {markdownify(title, "h1", "h2 mb-8 text-center")}
+          <h1 className="h2 mb-8 text-center">{config.title}</h1>
           <div className="row mb-16">
-            {currentPosts.map((post, i) => (
-              <div className="mt-16 lg:col-6" key={post.slug}>
-                <Post post={post} />
+            {posts.map((post, i) => (
+              <div className="mt-16 lg:col-6" key={post.attributes.slug}>
+                <Post post={post.attributes} />
               </div>
             ))}
           </div>
@@ -39,17 +29,16 @@ const BlogPagination = ({ postIndex, posts, currentPage, pagination }) => {
 export default BlogPagination;
 
 // get blog pagination slug
-export const getStaticPaths = () => {
-  const getAllSlug = getSinglePage(`content/${blog_folder}`);
-  const allSlug = getAllSlug.map((item) => item.slug);
+export const getStaticPaths = async () => {
+  const countResult = await postsCountData();
   const { pagination } = config.settings;
-  const totalPages = Math.ceil(allSlug.length / pagination);
+  const totalPages = Math.ceil(countResult.data.posts.meta.pagination.total / pagination);
   let paths = [];
 
   for (let i = 1; i < totalPages; i++) {
     paths.push({
       params: {
-        slug: (i + 1).toString(),
+        slug: (i + 1).toString()
       },
     });
   }
@@ -62,17 +51,23 @@ export const getStaticPaths = () => {
 
 // get blog pagination content
 export const getStaticProps = async ({ params }) => {
-  const currentPage = parseInt((params && params.slug) || 1);
   const { pagination } = config.settings;
-  const posts = getSinglePage(`content/${blog_folder}`);
-  const postIndex = await getListPage(`content/${blog_folder}/_index.md`);
 
+  // read the post by slug
+  const currentPage = parseInt((params && params.slug) || 1);
+  const postsResult = await postsByPageData(pagination, currentPage);
+
+  // get total post count
+  const countResult = await postsCountData();
+  const totalPages = Math.ceil(countResult.data.posts.meta.pagination.total / pagination);
+
+  // return the result
   return {
     props: {
       pagination: pagination,
-      posts: posts,
+      posts: postsResult.data.posts.data,
       currentPage: currentPage,
-      postIndex: postIndex,
+      totalPages
     },
   };
 };

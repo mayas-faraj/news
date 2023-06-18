@@ -1,36 +1,34 @@
 ---
-title: About The Author
-image: /images/author.png
+title: حول الموقع
+image: /images/syria.webp
 description: "meta description"
 layout: about
 education:
-  title: Formal Education
+  title: عن وكالة النشر 
   degrees:
-    - university: "Southeast University"
-      content: "1985 • 1991 • gravida nibh velvelit auctor alimo quet menean solli"
-    - university: "Northeast University"
-      content: "1985 • 1991 • gravida nibh velvelit auctor alimo quet menean solli"
-    - university: "Easteast University"
-      content: "1985 • 1991 • gravida nibh velvelit auctor alimo quet menean solli"
-    - university: "Southeast University"
-      content: "1985 • 1991 • gravida nibh velvelit auctor alimo quet menean solli"  
+    - university: "فكرة الوكالة"
+      content: "كثرة التأويلات والتكهنات حول الوضع الضبابي في وطننا نتيجة الحرب المفروضة عليه مما دفعنا `إلى جمع أكبر قدر من المعلومات والأخبار"
+    - university: "الاجتماع الأول التأسيسي"
+      content: "تأسست الوكالة في عام 2011 في أحلك الظلمات التي مر بها وطننا عن طريق مجموعة مراسلين"
+    - university: "العمل الأول"
+      content: "أول مهمة كانت لنا هي نشر أخبار حقيقة والرد على الأخبار الزائفة من الوكالات العالمية المتآمرة علينا"
+    - university: "الانتشار"
+      content: "بفضل المصداقية تلقت الأنباء المكتوبة ضمن وكالتنا آذان صاغية في الوسط الشعبي"  
 
 experience:
-  title: Work Experience
+  title: مصارد معلوماتنا
   list:
-    - Best Writer Award
-    - Best New Newel
-    - Best Book
-    - Best Article
-    - Best New Newel
-    - Best New Newel
-    - Best Book
-    - Best Article
-    - Best New Newel
-    - Best Book
+    - المراسلين الميدانيين
+    - المراسلين الحربيين
+    - الصحفيين في دول الجوار
+    - محللين سياسيين واقتصاديين
+    - خبراء سابقون في الأزمات
+    - أستبيانات عامة
+    - آراء موجهة لأطياف محددة
+    - الذكاء الصنعي
+    - مواقع الأنترنت
+    - وكالات عالمية
 
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi amet, ultrices scelerisue cras. Tincidunt hendrerit egestas venenatis risus sit nunc. Est esglit non in ipsum lect;aaus adipiscing et enim porttitor. Dui ultrices et volud eetpat nunc, turpis rutrum elit vestibululm ipsum. Arcu fringilla duis vitae mos dsdllis duicras interdum purus cursus massa metus. Acc umsan felaais, egsdvet nisi, viverra turpis fermentum sit suspf bafedfb ndisse fermentum consectetur. Facilisis feugiat trisique orci tempor sed masd fbsssa tristique ultrices sodales. Augue est sapien elementum facilisis. Enim tincidnt cras interdum purus ndisse. morbi quis nunc.
-
-Et dolor placerat tempus risus nunc urna, nunc a. Mattis viverra ut sapidaaen enim sed tortor. Mattis gravida fusce cras interdum purus cursus massa metus. Acc umsan felaais, eget nisi, viverra turpis fermentum sit suspf bafedfb ndisse. morbi quis nunc, at arcu quam facilisi. In in lacus aliquam dictum sagittis morbi odio. Et magnis cursus sem sed condimentum. Nibh non potenti ac amsdfet Tincidunt hendrerit egestas venenatis risus sit nunc. Est esglit non in ipsuasdm lect;aaus adipiscing et enim porttitor. Dui ultrices et volud eetpat nunc, turpis ndisse. morbi quis nunc, at arcu quam facilisi ndisse. morbi quis nunc, at arcu quam facilisi
+مرحبا بكم في موقع الأخبار العربي، الموقع الذي يقدم لكم أحدث وأدق المعلومات عن ما يحدث في العالم العربي والعالمي. نحن فريق من الصحفيين والمحررين والمترجمين المتخصصين في مجالات مختلفة، نسعى إلى تقديم خدمة إخبارية موثوقة ومتنوعة ومحايدة. نغطي مواضيع سياسية واقتصادية واجتماعية وثقافية ورياضية وتكنولوجية وغيرها، باللغة العربية وبأسلوب سهل وواضح. نهتم بآراء قرائنا ونحترم تعليقاتهم وانتقاداتهم، وندعوهم إلى المشاركة في تحسين محتوى موقعنا. شكرا لزيارتكم ونتمنى لكم قراءة ممتعة.

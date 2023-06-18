@@ -22,13 +22,13 @@ const About = ({ data }) => {
             />
           </div>
         )}
-        {markdownify(title, "h1", "h1 text-left lg:text-[55px] mt-12")}
+        {markdownify(title, "h1", "h1 text-right lg:text-[55px] mt-12")}
 
-        <div className="content text-left">
+        <div className="content text-right">
           <MDXRemote {...mdxContent} components={shortcodes} />
         </div>
 
-        <div className="row mt-24 text-left lg:flex-nowrap">
+        <div className="row mt-24 text-right lg:flex-nowrap">
           <div className="lg:col-6 ">
             <div className="rounded border border-border p-6 dark:border-darkmode-border ">
               {markdownify(education.title, "h2", "section-title mb-12")}

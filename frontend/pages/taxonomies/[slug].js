@@ -1,7 +1,7 @@
 import config from "@config/config.json";
 import Base from "@layouts/Baseof";
 import Sidebar from "@layouts/partials/Sidebar";
-import { categoriesData, postsByTaxonoimiesData, postsByTaxonomiesData, postsData, taxonomiesData } from "@lib/getServerData";
+import { categoriesData, postsByTaxonomiesData, postsData, taxonomiesData } from "@lib/getServerData";
 import Post from "@partials/Post";
 
 const { pagination } = config.settings;

@@ -1,14 +1,13 @@
 import Base from "@layouts/Baseof";
 import { slugify } from "@lib/utils/textConverter";
 import Post from "@partials/Post";
-import { useSearchContext } from "context/state";
 import { useRouter } from "next/router";
 
 const SearchPage = () => {
   const router = useRouter();
   const { query } = router;
   const keyword = slugify(query.key);
-  const { posts } = useSearchContext();
+  const posts  = [];
 
   const searchResults = posts.filter((product) => {
     if (product.frontmatter.draft) {

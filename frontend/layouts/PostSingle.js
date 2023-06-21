@@ -1,20 +1,12 @@
 import config from "@config/config.json";
 import Base from "@layouts/Baseof";
-import InnerPagination from "@layouts/components/InnerPagination";
 import dateFormat from "@lib/utils/dateFormat";
-import { markdownify } from "@lib/utils/textConverter";
-import { DiscussionEmbed } from "disqus-react";
-import { MDXRemote } from "next-mdx-remote";
-import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { FaRegCalendar, FaUserAlt } from "react-icons/fa";
 import Post from "./partials/Post";
 import Sidebar from "./partials/Sidebar";
-import shortcodes from "./shortcodes/all";
 import urls from "@config/urls"
-import ImageFallback from "./components/ImageFallback";
-
 
 const { meta_author } = config.metadata;
 

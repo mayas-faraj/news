@@ -25,7 +25,6 @@ const PostSingle = ({
   relatedPosts,
   categories,
 }) => {
-  console.dir(post.user.data, {depth: null});
   const author = post.user?.data?.attributes?.fullname ? post.user.data.attributes.fullname : meta_author;
 
   return (

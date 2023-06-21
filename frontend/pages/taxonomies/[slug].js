@@ -53,7 +53,6 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params }) => {
   const postsResponse = await postsData(pagination);
   const postsByTaxonoimiesResponse = await postsByTaxonomiesData(pagination, "", [params.slug]);
-  console.dir(postsByTaxonoimiesResponse, {depth: null});
   const taxonomiesResponse = await taxonomiesData();
   const categoriesResponse = await categoriesData();
   const taxonomyTitle = taxonomiesResponse.data.taxonomies.data.filter(tax => tax.attributes.slug === params.slug).map(tax => tax.attributes.name)[0];

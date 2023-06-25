@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react"; 
+import { Autoplay } from "swiper";
 import config from "@config/config.json";
 import Base from "@layouts/Baseof";
 import ImageFallback from "@layouts/components/ImageFallback";
@@ -6,16 +9,15 @@ import Post from "@layouts/partials/Post";
 import Sidebar from "@layouts/partials/Sidebar";
 import { getListPage } from "@lib/contentParser";
 import dateFormat from "@lib/utils/dateFormat";
-import { markdownify } from "@lib/utils/textConverter";
-import Link from "next/link";
 import { FaRegCalendar } from "react-icons/fa";
 import { categoriesData, homeData } from "lib/getServerData";
-import urls from "@config/urls"
+import urls from "@config/urls";
+import "swiper/css";
+import "swiper/css/autoplay";
 
 const { blog_folder, pagination } = config.settings;
 
 const Home = ({
-  banner,
   posts,
   featuredPosts,
   postsTotalCount,
@@ -37,36 +39,43 @@ const Home = ({
         />
 
         <div className="container">
-          <div className="row flex-wrap-reverse items-center justify-center lg:flex-row">
-            <div className={banner.image_enable ? "mt-12 text-center lg:mt-0 lg:text-right lg:col-6" : "mt-12 text-center lg:mt-0 lg:text-right lg:col-12"}>
-              <div className="banner-title">
-                {markdownify(banner.title, "h1")}
-                {markdownify(banner.title_small, "span")}
-              </div>
-              {markdownify(banner.content, "p", "mt-4")}
-              {banner.button.enable && (
-                <Link
-                  className="btn btn-primary mt-6"
-                  href={banner.button.link}
-                  rel={banner.button.rel}
-                >
-                  {banner.button.label}
-                </Link>
-              )}
-            </div>
-            {banner.image_enable && (
-              <div className="col-9 lg:col-6">
-                <ImageFallback
-                  className="mx-auto object-contain"
-                  src={banner.image}
-                  width={548}
-                  height={443}
-                  priority={true}
-                  alt="Banner Image"
-                />
-              </div>
-            )}
-          </div>
+          <Swiper spaceBetween={0} slidesPerView={1} loop={true} autoplay={{ delay: 3000 }} modules={[Autoplay]}>
+            {
+              featuredPosts && featuredPosts.map(post => (
+                <SwiperSlide key={post.attributes.slug}>
+                  <div className="row flex-wrap-reverse items-center justify-center lg:flex-row">
+                    <div className={"mt-12 text-center lg:mt-0 lg:text-right lg:col-6"}>
+                      <div className="banner-title">
+                        <h1 className="text-xl underline">{post.attributes.title}</h1>
+                        <span>{post.attributes.content?.substring(0, 260)}...</span>
+                      </div>
+                      <p className="mt-4">من التصنيف: {post.attributes.category.data.attributes.name}</p>
+
+                      <Link
+                        className="btn btn-primary mt-6"
+                        href={"/posts/" + post.attributes.slug}
+                        rel=""
+                      >
+                        قراءة المزيد
+                      </Link>
+                    </div>
+                    {post?.attributes?.feature_image?.data?.attributes?.url && (
+                      <div className="col-9 lg:col-6">
+                        <ImageFallback
+                          className="mx-auto object-contain mb-4 border-primary border-4 border-double"
+                          src={urls.backendUrl + post.attributes.feature_image.data.attributes.url}
+                          alt={post?.attributes?.feature_image.data?.attributes?.alternativeText}
+                          width={548}
+                          height={443}
+                          priority={true}
+                        />
+                      </div>
+                    )}
+                  </div>
+                </SwiperSlide>
+              ))
+            }
+          </Swiper>
         </div>
       </section>
 
@@ -175,13 +184,12 @@ export default Home;
 export const getStaticProps = async () => {
   const homepage = await getListPage("content/_index.md");
   const { frontmatter } = homepage;
-  const { banner, promotion } = frontmatter;
+  const { promotion } = frontmatter;
   const homeDataResponse = await homeData(pagination);
   const categoriesResponse = await categoriesData();
 
   return {
     props: {
-      banner: banner,
       posts: homeDataResponse.data.allposts.data,
       featuredPosts: homeDataResponse.data.featuredposts.data,
       postsTotalCount: homeDataResponse.data.paginationInfo.meta.pagination.total,

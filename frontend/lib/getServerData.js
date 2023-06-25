@@ -59,6 +59,13 @@ export const homeData = async (pageSize) => {
           slug
           content
           createdAt
+          category {
+            data {
+              attributes {
+                name
+              }
+            }
+          }
           user {
             data {
               attributes {

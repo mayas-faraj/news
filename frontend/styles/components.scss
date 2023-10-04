@@ -217,3 +217,15 @@ footer .socials {
 #disqus_thread {
   color-scheme: none;
 }
+
+.min-height-520 {
+  min-height: 520px;
+}
+
+.header {
+  background-image: url("/images/world.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 35%;
+}

@@ -15,11 +15,6 @@ featured_posts:
   enable: true
   title: مقالات هامة
 
-promotion:
-  enable: false
-  image: /images/promotion.png
-  link: "#"
-
 recent_posts:
   title: آخر المقالات
   enable: true

@@ -13,7 +13,7 @@ import urls from "@config/urls"
 
 const { about, featured_posts, newsletter } = config.widgets;
 
-const Sidebar = ({ posts, categories, className }) => {
+const Sidebar = ({ posts, featuredPosts, categories, className }) => {
   const [showRecent, setShowRecent] = useState(true);
 
   return (
@@ -49,7 +49,7 @@ const Sidebar = ({ posts, categories, className }) => {
               key={i}
             >
               <svg
-                className="absolute left-0 top-2.5"
+                className="absolute left-0 top-2.5 -scale-x-100	"
                 width="20px"
                 height="20px"
                 viewBox="0 0 20 20"
@@ -82,7 +82,7 @@ const Sidebar = ({ posts, categories, className }) => {
               }`}
             onClick={() => setShowRecent(false)}
           >
-          كل الأخبار
+            الأخبار الهامة
           </button>
           <button
             className={`btn ms-3  px-5 py-2 ${showRecent ? "btn-primary" : "btn-outline-primary"
@@ -125,7 +125,7 @@ const Sidebar = ({ posts, categories, className }) => {
               </div>
             </div>
           ))
-          : posts
+          : featuredPosts
             .slice(0, featured_posts.showPost)
             .map((post, i, arr) => (
               <div

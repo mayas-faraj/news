@@ -1,22 +1,22 @@
 import urls from "@config/urls";
 
-export const fetchData= async (queryString) => {
-    const result = await fetch(urls.backendApiUrl, {
-        body: JSON.stringify({ query: queryString}),
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        }
-    });
+export const fetchData = async (queryString) => {
+  const result = await fetch(urls.backendApiUrl, {
+    body: JSON.stringify({ query: queryString }),
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
-    const data = await result.json();
-    return data;
+  const data = await result.json();
+  return data;
 };
 
 export const homeData = async (pageSize) => {
   return await fetchData(`
   {
-    allposts: posts (pagination: {pageSize: ${pageSize}, page: 1}){
+    allposts: posts (sort: "createdAt:desc", pagination: {pageSize: ${pageSize}, page: 1}){
       data {
         attributes {
           title
@@ -121,7 +121,7 @@ export const postsCountData = async () => {
 };
 
 export const postsSlugData = async () => {
-    return await fetchData(`
+  return await fetchData(`
     {
         posts (pagination: {pageSize: 10000000}) {
           data {
@@ -218,10 +218,16 @@ export const postsByCategoryData = async (pageSize, category) => {
   `);
 };
 
-export const postsByTaxonomiesData = async (pageSize, postSlug, postTaxonomies) => {
+export const postsByTaxonomiesData = async (
+  pageSize,
+  postSlug,
+  postTaxonomies
+) => {
   return await fetchData(`
   {
-      posts (pagination: { pageSize: ${pageSize} }, filters: { slug: { ne: "${postSlug}"}, taxonomies: { slug: {in: [${postTaxonomies.map(tax => `"${tax}"`)}] } } }) {
+      posts (pagination: { pageSize: ${pageSize} }, filters: { slug: { ne: "${postSlug}"}, taxonomies: { slug: {in: [${postTaxonomies.map(
+    (tax) => `"${tax}"`
+  )}] } } }) {
         data {
           attributes {
             title
@@ -261,7 +267,7 @@ export const postsByTaxonomiesData = async (pageSize, postSlug, postTaxonomies) 
 };
 
 export const postsData = async (pageSize) => {
-    return await fetchData(`
+  return await fetchData(`
     {
         posts (pagination: { pageSize: ${pageSize} }) {
           data {
@@ -343,7 +349,7 @@ export const postsFeaturedData = async () => {
 };
 
 export const postData = async (slug) => {
-    return await fetchData(`
+  return await fetchData(`
     {
         posts (filters: {slug: {eq: "${slug}"}})  {
           data {
@@ -414,7 +420,7 @@ export const taxonomiesData = async () => {
     }
   }
   `);
-}
+};
 
 export const categoriesData = async () => {
   return fetchData(`
@@ -430,4 +436,27 @@ export const categoriesData = async () => {
     }
   }
   `);
-}
+};
+
+export const advertisementsData = async () => {
+  return fetchData(`
+    {
+      advertisements(filters: { or: { start_date: { lt: "2023-09-19" }, end_date: { gt: "2023-09-19"} } }) {
+        data {
+          id
+          attributes {
+            link
+            media {
+              data {
+                attributes {
+                  url
+                  alternativeText
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    `);
+};
